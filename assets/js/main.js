@@ -51,7 +51,8 @@
           if (!start) start = ts;
           var p = Math.min((ts - start) / dur, 1);
           var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+          var val = Math.round(target * eased);
+          el.textContent = (target >= 10000 ? val.toLocaleString() : String(val)) + suffix;
           if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
