@@ -412,9 +412,8 @@ h3 { font-size: 1.28rem; }
   .stat { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); padding: 22px; }
   .stats-band .grid-4 .stat:last-child { border-bottom: 0; }
 }
-@media (max-width: 760px) {
-  body { font-size: 16px; }
-  .section { padding: 64px 0; }
+/* Collapse the nav to the hamburger for tablets and "desktop site" mode too */
+@media (max-width: 1024px) {
   .nav-links, .nav-cta .btn--ghost { display: none; }
   .nav-toggle { display: inline-flex; }
   .site-header.open .nav-links {
@@ -423,6 +422,10 @@ h3 { font-size: 1.28rem; }
     padding: 14px 20px 22px; border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md);
   }
   .site-header.open .nav-links a { padding: 12px 14px; }
+}
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .section { padding: 64px 0; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
   .cta-card { padding: 40px 28px; }
