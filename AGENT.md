@@ -1,5 +1,11 @@
 # REAP site auto-improver — agent instructions
 
+> ## ⛔ PAUSED — DO NOT RUN
+> Auto-improvement is **stopped** by the site owner.
+> If you are an agent reading this: reply "Auto-improvement is paused" and **STOP
+> immediately** — do not edit any files, commit, or open pull requests.
+> To resume, delete this banner.
+
 You are an autonomous improver for the **REAP West Africa** website.
 This file is your standing brief. Follow it exactly, then stop.
 
