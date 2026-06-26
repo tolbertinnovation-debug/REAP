@@ -524,3 +524,53 @@ h3 { font-size: 1.28rem; }
   .hero--image { min-height: 0; padding: 12px 0 0; }
   .actions-row { grid-template-columns: 1fr; }
 }
+
+/* ===========================================================
+   Programs carousel (auto-play, infinite, swipeable)
+   Keeps the existing .card.program design unchanged.
+   =========================================================== */
+.carousel { position: relative; }
+.carousel-viewport { overflow: hidden; }
+.carousel-track {
+  display: flex; align-items: stretch;
+  will-change: transform; touch-action: pan-y;
+}
+.carousel-slide { flex: 0 0 auto; display: flex; box-sizing: border-box; }
+.carousel-slide > .program { width: 100%; height: 100%; }
+/* Before JS sizes the slides, show them spread so there is no flash of a giant card */
+.carousel:not(.is-ready) .carousel-track { gap: 24px; }
+.carousel:not(.is-ready) .carousel-slide { flex: 0 0 calc(50% - 12px); }
+.carousel:not(.is-ready) .carousel-arrow,
+.carousel:not(.is-ready) .carousel-dots { display: none; }
+
+/* Arrows */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line);
+  background: #fff; color: var(--ink-900); cursor: pointer; display: grid; place-items: center;
+  box-shadow: var(--shadow-md); transition: background .2s var(--ease), transform .2s var(--ease), color .2s var(--ease);
+}
+.carousel-arrow svg { width: 22px; height: 22px; stroke: currentColor; }
+.carousel-arrow:hover { background: var(--brand-700); color: #fff; }
+.carousel-arrow.prev { left: -8px; }
+.carousel-arrow.next { right: -8px; }
+@media (min-width: 1240px) {
+  .carousel-arrow.prev { left: -22px; }
+  .carousel-arrow.next { right: -22px; }
+}
+
+/* Dots */
+.carousel-dots { display: flex; justify-content: center; gap: 9px; margin-top: 30px; }
+.carousel-dots button {
+  width: 9px; height: 9px; padding: 0; border: 0; border-radius: 100px; cursor: pointer;
+  background: #cfe0d4; transition: width .25s var(--ease), background .25s var(--ease);
+}
+.carousel-dots button.is-active { width: 26px; background: var(--brand-600); }
+
+/* Hide arrows on touch/mobile, keep dots */
+@media (max-width: 760px) {
+  .carousel-arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { transition: none !important; }
+}
